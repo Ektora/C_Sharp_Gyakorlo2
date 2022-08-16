@@ -11,11 +11,30 @@
             t[i] = rnd.Next(10);
         }
 
+        Console.WriteLine("Beszúrásos rendezés:");
+
         printArray(t);
 
         DateTime timeStart = DateTime.Now;
         insertionSort(t);
         DateTime timeEnd = DateTime.Now;
+
+        printArray(t);
+
+        Console.WriteLine(timeEnd.Ticks - timeStart.Ticks);
+
+        Console.WriteLine("Buborék rendezés:");
+
+        for (int i = 0; i < t.Length; i++)
+        {
+            t[i] = rnd.Next(10);
+        }
+
+        printArray(t);
+
+        timeStart = DateTime.Now;
+        bubbleSort(t);
+        timeEnd = DateTime.Now;
 
         printArray(t);
 
@@ -47,4 +66,22 @@
             a[i + 1] = key;
         }
     }
+
+    static void bubbleSort(int[] a)
+    {
+        int i, j, k;
+        for(i = 1; i<= a.Length; i++)
+        {
+            for(j = 0; j< a.Length-1; j++)
+            {
+                if (a[j] > a[j + 1])
+                {
+                    k = a[j];
+                    a[j] = a[j + 1];
+                    a[j + 1] = k;
+                }
+            }
+        }
+    }
+
 }
