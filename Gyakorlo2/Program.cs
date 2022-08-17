@@ -40,6 +40,23 @@
 
         Console.WriteLine(timeEnd.Ticks - timeStart.Ticks);
 
+        Console.WriteLine("Kiválasztásos rendezés:");
+
+        for (int i = 0; i < t.Length; i++)
+        {
+            t[i] = rnd.Next(10);
+        }
+
+        printArray(t);
+
+        timeStart = DateTime.Now;
+        selectionSort(t);
+        timeEnd = DateTime.Now;
+
+        printArray(t);
+
+        Console.WriteLine(timeEnd.Ticks - timeStart.Ticks);
+
     }
 
     static void printArray(int[] a)
@@ -80,6 +97,26 @@
                     a[j] = a[j + 1];
                     a[j + 1] = k;
                 }
+            }
+        }
+    }
+
+    static void selectionSort(int[] a)
+    {
+        int min, seged;
+        for(int i = 0; i < a.Length; i++)
+        {
+            min = i;
+            for(int j = i+1; j< a.Length; j++)
+            {
+                if (a[j] < a[min])
+                    min = j;
+            }
+            if(i != min)
+            {
+                seged = a[i];
+                a[i] = a[min];
+                a[min] = seged;
             }
         }
     }
