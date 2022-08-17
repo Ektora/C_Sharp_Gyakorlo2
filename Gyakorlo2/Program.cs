@@ -57,6 +57,24 @@
 
         Console.WriteLine(timeEnd.Ticks - timeStart.Ticks);
 
+
+        Console.WriteLine("Gyors rendezés:");
+
+        for (int i = 0; i < t.Length; i++)
+        {
+            t[i] = rnd.Next(10);
+        }
+
+        printArray(t);
+
+        timeStart = DateTime.Now;
+        quickSort(t, 0, t.Length-1);
+        timeEnd = DateTime.Now;
+
+        printArray(t);
+
+        Console.WriteLine(timeEnd.Ticks - timeStart.Ticks);
+
     }
 
     static void printArray(int[] a)
@@ -121,4 +139,29 @@
         }
     }
 
+    static void quickSort(int[] a, int left, int right)
+    {
+        int i = left, j = right, seged, kozep = a[left];
+
+        while (i <= j)
+        {
+            while (a[i] < kozep) i++;
+            while (a[j] > kozep) j--;
+            if (i <= j)
+            {
+                seged = a[i];
+                a[i] = a[j];
+                a[j] = seged;
+                i++;
+                j--;
+            }
+        }
+
+        if(left < j)
+            quickSort(a, left, j);
+        if(i < right)
+            quickSort(a, i, right);
+    }
+
+    
 }
