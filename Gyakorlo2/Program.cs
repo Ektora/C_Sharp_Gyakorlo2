@@ -2,7 +2,7 @@
 {
     static void Main(string[] args)
     {
-
+        /*
         Random rnd = new Random();
         int[] t = new int[30];
 
@@ -74,6 +74,26 @@
         printArray(t);
 
         Console.WriteLine(timeEnd.Ticks - timeStart.Ticks);
+        */
+
+        // 8. feladat (Matematika: kombinációk)
+        int[] tomb = new int[10];
+        for (int i=0; i < tomb.Length; i++)
+        {
+            tomb[i] = Convert.ToInt32(Console.ReadLine());
+        }
+        quickSort(tomb,0,tomb.Length-1);
+        for (int i = 0; i < tomb.Length - 1; i++)
+        {
+            if (i > 0 && tomb[i] == tomb[i - 1])
+                continue;
+            for (int j = i + 1; j < tomb.Length; j++)
+            {
+                if (tomb[j] == tomb[j - 1])
+                    continue;
+                Console.WriteLine(tomb[i] + " " + tomb[j]);
+            }
+        }
 
     }
 
