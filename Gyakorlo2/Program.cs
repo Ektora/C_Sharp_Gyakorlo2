@@ -77,6 +77,7 @@
         */
 
         // 8. feladat (Matematika: kombinációk)
+        /*
         int[] tomb = new int[10];
         for (int i=0; i < tomb.Length; i++)
         {
@@ -94,7 +95,11 @@
                 Console.WriteLine(tomb[i] + " " + tomb[j]);
             }
         }
+        */
+        Random rnd = new Random();
+        int[] t = new int[] {2,3,4, 4, 4, 4}; 
 
+        Console.WriteLine("Van 4-es minta a tömbben: " + isConsecutiveFour(t));
     }
 
     static void printArray(int[] a)
@@ -183,5 +188,27 @@
             quickSort(a, i, right);
     }
 
-    
+    static bool isConsecutiveFour(int[] values)
+    {
+        if (values.Length < 4) return false;
+        int counter = 1, value = values[0];
+        for(int i = 1; i < values.Length; i++)
+        {
+            if(value == values[i])
+            {
+                counter++;
+            }
+            else
+            {
+               value = values[i];
+                counter = 1;
+            }
+
+            if(counter == 4)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
 }
