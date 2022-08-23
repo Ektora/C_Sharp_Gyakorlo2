@@ -96,10 +96,20 @@
             }
         }
         */
+
+        //9. feladat 4-es minta
+        /*
         Random rnd = new Random();
         int[] t = new int[] {2,3,4, 4, 4, 4}; 
 
         Console.WriteLine("Van 4-es minta a tömbben: " + isConsecutiveFour(t));
+        */
+
+        //10. feladat Legnagyobb közös osztó
+
+        int[] g = { 32, 16, 64 };
+
+        Console.WriteLine("Legnagyobb közös osztó: " + gcd(g)); 
     }
 
     static void printArray(int[] a)
@@ -210,5 +220,23 @@
             }
         }
         return false;
+    }
+
+    static int gcd(int[] numbers)
+    {
+        bool seged; ;
+        int eredmeny = 0;
+        selectionSort(numbers);
+        for(int i = 1; i <=numbers[0]; i++)
+        {
+            seged = true;
+            for(int j = 0; j< numbers.Length; j++)
+            {
+                if (numbers[j] % i != 0) seged = false;
+            }
+            if (seged) eredmeny = i;
+        }
+
+        return eredmeny;
     }
 }
